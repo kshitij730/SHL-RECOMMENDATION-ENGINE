@@ -16,7 +16,7 @@ def main():
     texts = df["full_text"].tolist()
 
     model = SentenceTransformer(
-        "sentence-transformers/all-MiniLM-L6-v2",
+        "sentence-transformers/all-MiniLM-L12-v2",
         device="cpu"
     )
 
@@ -33,3 +33,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
