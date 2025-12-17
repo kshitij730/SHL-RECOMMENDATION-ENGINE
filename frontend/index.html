@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHL Assessment Recommender</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="main-title">🎯 SHL Assessment Recommender</h1>
+            <p class="subtitle">Find the perfect assessment for your hiring needs using AI</p>
+        </header>
+
+        <div class="search-section">
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    class="search-input" 
+                    placeholder="Describe your hiring needs (e.g., Java developer with team collaboration skills)"
+                    autocomplete="off"
+                />
+                <button id="searchBtn" class="search-btn">
+                    <span id="btnText">🔍 Search</span>
+                    <span id="btnLoader" class="loader" style="display: none;"></span>
+                </button>
+            </div>
+
+            <div class="examples-section">
+                <button class="toggle-examples" id="toggleExamples">
+                    💡 Try example queries
+                </button>
+                <div class="examples-grid" id="examplesGrid" style="display: none;">
+                    <button class="example-tag">Hiring Java developer who can collaborate with business teams</button>
+                    <button class="example-tag">Entry-level customer service representative</button>
+                    <button class="example-tag">Senior software engineer with leadership skills</button>
+                    <button class="example-tag">Sales manager for retail operations</button>
+                    <button class="example-tag">Accountant with bookkeeping experience</button>
+                    <button class="example-tag">Data analyst proficient in SQL and Python</button>
+                    <button class="example-tag">Project manager with agile experience</button>
+                    <button class="example-tag">Marketing coordinator with social media skills</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="resultsSection" class="results-section" style="display: none;">
+            <div class="results-header">
+                <h2 id="resultsTitle"></h2>
+            </div>
+            <div id="resultsContainer" class="results-container"></div>
+        </div>
+
+        <div id="noResults" class="no-results" style="display: none;">
+            <div class="no-results-icon">🔍</div>
+            <h3>No assessments found</h3>
+            <p>Try broadening your search or using different keywords</p>
+        </div>
+
+        <div id="errorMessage" class="error-message" style="display: none;"></div>
+    </div>
+
+    <footer class="footer">
+        <p>Powered by Sentence Transformers + FastAPI</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
