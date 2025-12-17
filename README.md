@@ -4,12 +4,6 @@ A deterministic, explainable semantic recommendation system that helps HR profes
 
 This system is deliberately designed without generative AI or LLMs to ensure reproducibility, fairness, explainability, and reliability — key requirements in assessment and hiring platforms.
 
----
-## 🎥 Demo Video
-
-[![Demo Video](https://youtu.be/w_l3EInYMlo)
-
----
 ## 🔍 What This Project Does
 
 - Takes a natural-language hiring requirement
@@ -202,6 +196,7 @@ The architecture mirrors real-world enterprise search systems, not demo-level ch
 1. Update `frontend/script.js` with your backend URL
 2. Go to [Netlify](https://netlify.com)
 3. Drag and drop `frontend` folder
+
 
 
 
