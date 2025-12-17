@@ -72,8 +72,7 @@ This is an engineering-first system, not a demo toy.
 
 ## 🏗️ Architecture Overview
 
-![Architecture Overview](YOUR_IMAGE_URL_HERE)
-*Replace `YOUR_IMAGE_URL_HERE` with your screenshot URL*
+![Architecture Overview](https://github.com/kshitij730/SHL-RECOMMENDATION-ENGINE/blob/main/RECOMMENDATION%20ENGINE%20ARCITECTURE.png)
 
 ---
 
@@ -205,6 +204,7 @@ The architecture mirrors real-world enterprise search systems, not demo-level ch
 1. Update `frontend/script.js` with your backend URL
 2. Go to [Netlify](https://netlify.com)
 3. Drag and drop `frontend` folder
+
 
 
 
