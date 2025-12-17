@@ -7,9 +7,7 @@ This system is deliberately designed without generative AI or LLMs to ensure rep
 ---
 ## 🎥 Demo Video
 
-[![Demo Video](https://img.shields.io/badge/▶-Watch%20Demo-red?style=for-the-badge)](YOUR_VIDEO_URL_HERE)
-
-*Replace `YOUR_VIDEO_URL_HERE` with your video link (YouTube/Loom)*
+[![Demo Video](https://github.com/kshitij730/SHL-RECOMMENDATION-ENGINE/blob/main/SHL-RECOMMENDATION-ENGINE.mp4)
 
 ---
 ## 🔍 What This Project Does
@@ -204,6 +202,7 @@ The architecture mirrors real-world enterprise search systems, not demo-level ch
 1. Update `frontend/script.js` with your backend URL
 2. Go to [Netlify](https://netlify.com)
 3. Drag and drop `frontend` folder
+
 
 
 
