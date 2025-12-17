@@ -14,7 +14,7 @@ class RecommenderEngine:
         self.texts = self.df["full_text"].astype(str).tolist()
 
         # ---------- BI-ENCODER (RECALL) ----------
-        self.vectors = embed(self.texts)
+        self.vectors = torch.load("data/embeddings.pt")
 
         # ---------- CROSS-ENCODER (RERANK) ----------
         # Option 1: runtime download from Hugging Face
@@ -137,3 +137,4 @@ class RecommenderEngine:
         if query_len < 15:
             return min(20, candidates)
         return min(30, candidates)
+
