@@ -1,64 +1,8 @@
-# Web Framework
 fastapi
 uvicorn
-starlette
-
-# CORS Middleware
-python-multipart
-
-# Data Validation
-pydantic
-pydantic-core
-
-# ML/NLP Core
-sentence-transformers
-transformers
-torch
-torchvision
-torchaudio
-
-# Data Processing
 pandas
-numpy
-
-# Utilities
-scipy
 scikit-learn
-pillow
-requests
-tqdm
-regex
-filelock
-fsspec
-tokenizers
-safetensors
-huggingface-hub
-
-# Type Hints & Annotations
-typing-extensions
-annotated-types
-
-# Async Support
-anyio
-sniffio
-idna
-
-# HTTP & Networking
-httptools
-websockets
-watchfiles
-python-dotenv
-
-# Data Serialization
-pyyaml
-joblib
-sympy
-mpmath
-networkx
-jinja2
-markupsafe
-
-# Additional ML Dependencies
-sentencepiece
-protobuf
-
+numpy
+python-multipart
+flask
+langchain
