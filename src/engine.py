@@ -8,18 +8,21 @@ from src.utils import load_catalogue
 
 class RecommenderEngine:
     def __init__(self, catalogue_path="data/shl_assessments_full_catalog.csv"):
+        # ---------- LOAD DATA ----------
         self.df = load_catalogue(catalogue_path)
 
-        # Ensure pure Python strings
         self.texts = self.df["full_text"].astype(str).tolist()
 
-        # Bi-encoder embeddings (recall stage)
+        # ---------- BI-ENCODER (RECALL) ----------
         self.vectors = embed(self.texts)
 
-        # Cross-encoder reranker (deep relevance)
+        # ---------- CROSS-ENCODER (RERANK) ----------
+        # Option 1: runtime download from Hugging Face
+        # NOTHING is stored in your repo
         self.reranker = CrossEncoder(
             "cross-encoder/ms-marco-MiniLM-L-6-v2",
-            max_length=512
+            max_length=512,
+            device="cpu"  # IMPORTANT: avoid GPU assumptions
         )
 
         self.stop_words = {
@@ -36,7 +39,6 @@ class RecommenderEngine:
         # ---------- BI-ENCODER RETRIEVAL ----------
         scores = cos_sim(query_vec, self.vectors)[0]
 
-        # Dynamic cutoff: keep top 15% only
         scores_sorted = torch.sort(scores, descending=True).values
         cutoff = scores_sorted[int(len(scores_sorted) * 0.85)]
         candidate_idx = torch.where(scores >= cutoff)[0]
@@ -61,9 +63,8 @@ class RecommenderEngine:
             pairs.append((query, row["full_text"]))
             rows.append(row)
 
-        # Cross-encoder returns NumPy float32 → must cast
+        # CrossEncoder returns NumPy float32 → cast to Python float
         raw_scores = [float(s) for s in self.reranker.predict(pairs)]
-
         norm_scores = self._normalize_scores(raw_scores)
 
         # ---------- BUILD RESULTS ----------
@@ -77,16 +78,12 @@ class RecommenderEngine:
                 "duration": row.get("Assessment Duration", "N/A"),
                 "remote_testing": row.get("Remote Testing Support", "N/A"),
                 "adaptive": row.get("Adaptive/IRT Support", "N/A"),
-                "score": float(round(score, 4))  # 🔥 FASTAPI SAFE
+                "score": float(round(score, 4))
             })
 
-        # Sort by normalized score
         results.sort(key=lambda x: x["score"], reverse=True)
-
-        # ---------- CONFIDENCE LABELS ----------
         results = self._assign_confidence(results)
 
-        # ---------- DYNAMIC RESULT COUNT ----------
         top_score = results[0]["score"]
         results = [
             r for r in results
@@ -116,10 +113,6 @@ class RecommenderEngine:
     # ================== UTILITIES ================== #
 
     def _normalize_scores(self, scores):
-        """
-        Converts ALL values to Python float
-        Ensures FastAPI JSON safety
-        """
         scores = [float(s) for s in scores]
 
         min_s = min(scores)
