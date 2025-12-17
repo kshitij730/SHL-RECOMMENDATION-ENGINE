@@ -6,3 +6,8 @@ numpy
 python-multipart
 flask
 langchain
+
+
+torch
+sentence-transformers
+pandas
