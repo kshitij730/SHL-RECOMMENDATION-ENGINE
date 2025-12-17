@@ -1,25 +1,25 @@
 # Web Framework
-fastapi==0.104.1
-uvicorn[standard]==0.24.0
-starlette==0.27.0
+fastapi
+uvicorn
+starlette
 
 # CORS Middleware
-python-multipart==0.0.6
+python-multipart
 
 # Data Validation
-pydantic==2.5.0
-pydantic-core==2.14.1
+pydantic
+pydantic-core
 
 # ML/NLP Core
-sentence-transformers==2.2.2
-transformers==4.35.2
-torch==2.1.1
-torchvision==0.16.1
-torchaudio==2.1.1
+sentence-transformers
+transformers
+torch
+torchvision
+torchaudio
 
 # Data Processing
-pandas==2.1.3
-numpy==1.26.2
+pandas
+numpy
 
 # Utilities
 scipy
@@ -61,3 +61,4 @@ markupsafe
 # Additional ML Dependencies
 sentencepiece
 protobuf
+
